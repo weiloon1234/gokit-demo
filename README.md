@@ -18,6 +18,25 @@ go run cmd/cli/main.go migrate down
 go run cmd/cli/main.go migrate force
 ```
 
+# Seeder
+```
+#create seeder
+  1. create file at database/seeds/
+  2. register seeder at cmd/cli/main.go
+  
+#run seeder
+go run cmd/cli/main.go seed the_seeder_name
+```
+
+# CLI command
+```
+#create command
+  1. create file at commands/
+  2. add command at cmd/cli/main.go 
+
+#run command
+go run cmd/cli/main.go command_name
+```
 # BUILD -> CLI
 `go build -o bin/cli ./cmd/cli` or `make build-cli`
 

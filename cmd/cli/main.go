@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
 	"github.com/weiloon1234/gokit"
 	"github.com/weiloon1234/gokit/cli"
-	"github.com/weiloon1234/gokit/cli/commands"
+	gokitCommand "github.com/weiloon1234/gokit/cli/commands"
+	"gokit-demo/commands"
 	"gokit-demo/database/seeds"
 )
 
@@ -43,20 +43,11 @@ func main() {
 	gokit.Init(config)
 
 	// Register a custom seeder
-	commands.RegisterSeeder("country_seeder", seeds.CountrySeeder)
+	gokitCommand.RegisterSeeder("country_seeder", seeds.CountrySeeder)
 
-	// Add a custom CLI command
-	customCommand := &cobra.Command{
-		Use:   "custom",
-		Short: "Run a custom command",
-		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Println("Running custom command!")
-			return nil
-		},
-	}
-
+	// Add custom command here
 	cli.Init([]*cobra.Command{
-		customCommand,
+		commands.CustomCommand,
 	})
 
 	// Execute CLI with custom commands
