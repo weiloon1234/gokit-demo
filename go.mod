@@ -5,7 +5,7 @@ go 1.23.3
 require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/spf13/cobra v1.8.1
-	github.com/weiloon1234/gokit v0.0.0-20241130173616-b638cd553712
+	github.com/weiloon1234/gokit v0.0.0-20241202082745-ebd0c5c69e30
 )
 
 require (

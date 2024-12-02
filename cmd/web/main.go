@@ -6,23 +6,28 @@ import (
 	"github.com/weiloon1234/gokit"
 	"github.com/weiloon1234/gokit/validator"
 	"regexp"
+	"time"
 )
 
 func main() {
 	// gokit configuration
 	config := gokit.Config{
-		DBConfig: gokit.DBConfig{
-			DSN: "root@tcp(127.0.0.1:3306)/go_test1",
+		DBConfig: &gokit.DBConfig{
+			Host:         "localhost",
+			Port:         "3306",
+			Username:     "root",
+			DatabaseName: "go_test1",
 		},
-		RedisConfig: gokit.RedisConfig{
-			Addr: "127.0.0.1:6379",
+		RedisConfig: &gokit.RedisConfig{
+			Host: "127.0.0.1",
+			Port: "6379",
 		},
 		LocalizationConfig: gokit.LocaleConfig{
 			DefaultLanguage:    "en",
 			SupportedLanguages: []string{"en", "zh"},
 			TranslationPaths:   []string{"locales"},
 		},
-		Timezone: "Asia/Singapore",
+		Timezone: "Asia/Kuala_Lumpur",
 		Features: gokit.NewDefaultFeatures(),
 	}
 
@@ -36,14 +41,14 @@ func main() {
 		return re.MatchString(fmt.Sprintf("%v", value))
 	})
 
-	// Set up Gin router
-	r := gin.Default()
+	ginConfig := gokit.GinConfig{
+		LogFile:                       "tmp/server.log",
+		FatalErrorInformTelegram:      true,
+		TelegramBotToken:              "123",
+		TelegramChatId:                "123",
+		TelegramMessageThrottleMinute: 10 * time.Minute,
+	}
 
-	// Example route
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "pong"})
-	})
-
-	// Start Gin server
+	r := gokit.InitRouter(ginConfig)
 	r.Run(":8080")
 }

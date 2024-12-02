@@ -1,4 +1,4 @@
-.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross run-server run-cli clean-build help
+.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross run-server run-cli hot-web hot-cli gokit-update clean-build help
 
 # Variables
 BIN_DIR := bin
@@ -44,6 +44,9 @@ hot-web:
 
 hot-cli:
 	air -c .air-cli.toml
+
+gokit-update:
+	go clean -modcache && go get -u github.com/weiloon1234/gokit@latest
 
 # Clean target
 clean-build:

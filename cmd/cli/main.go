@@ -11,10 +11,12 @@ import (
 func main() {
 	// Minimal gokit configuration for CLI
 	config := gokit.Config{
-		DBConfig: gokit.DBConfig{
-			DSN: "root@tcp(127.0.0.1:3306)/go_test1",
+		DBConfig: &gokit.DBConfig{
+			Host:         "localhost",
+			Port:         "3306",
+			Username:     "root",
+			DatabaseName: "go_test1",
 		},
-		RedisConfig: gokit.RedisConfig{}, // Redis not needed for CLI commands
 		LocalizationConfig: gokit.LocaleConfig{
 			DefaultLanguage: "en",
 		},
