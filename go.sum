@@ -148,6 +148,10 @@ github.com/weiloon1234/gokit v0.0.0-20241202080325-e23d2c4d5131 h1:zsNn64wYuYmc0
 github.com/weiloon1234/gokit v0.0.0-20241202080325-e23d2c4d5131/go.mod h1:we9Z/D/0YiD1E8byPv3zdNJzFT3sZmZ/1OIxEfFgvdo=
 github.com/weiloon1234/gokit v0.0.0-20241202082745-ebd0c5c69e30 h1:HOl0A2pX3JKFua+b7xb+Cu+8aQGJC71HhRj+0nZ9uyk=
 github.com/weiloon1234/gokit v0.0.0-20241202082745-ebd0c5c69e30/go.mod h1:we9Z/D/0YiD1E8byPv3zdNJzFT3sZmZ/1OIxEfFgvdo=
+github.com/weiloon1234/gokit v0.0.0-20241202084442-4a31de427607 h1:28Y9y7y0bo5jBrfzoR+DC4oZOWj62SIF+LHTcZQa+oA=
+github.com/weiloon1234/gokit v0.0.0-20241202084442-4a31de427607/go.mod h1:we9Z/D/0YiD1E8byPv3zdNJzFT3sZmZ/1OIxEfFgvdo=
+github.com/weiloon1234/gokit v0.0.0-20241202085112-44ee29e98f2d h1:bzFZE5cjjbnrP8wwtrDgu/g8KAJiWERVwZFF+xAbwsU=
+github.com/weiloon1234/gokit v0.0.0-20241202085112-44ee29e98f2d/go.mod h1:we9Z/D/0YiD1E8byPv3zdNJzFT3sZmZ/1OIxEfFgvdo=
 go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.54.0 h1:TT4fX+nBOA/+LUkobKGW1ydGcn+G3vRw9+g5HwCphpk=
 go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.54.0/go.mod h1:L7UH0GbB0p47T4Rri3uHjbpCFYrVrwc1I25QhNPiGK8=
 go.opentelemetry.io/otel v1.29.0 h1:PdomN/Al4q/lN6iBJEN3AwPvUiHPMlt93c8bqTG5Llw=

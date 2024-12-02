@@ -1,4 +1,4 @@
-.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross run-server run-cli hot-web hot-cli gokit-update clean-build help
+.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross run-server run-cli hot gokit-update go-clean-cache clean-build help
 
 # Variables
 BIN_DIR := bin
@@ -39,14 +39,14 @@ run-server: build-web
 run-cli: build-cli
 	@$(BIN_DIR)/cli $(ARGS)
 
-hot-web:
+hot:
 	air -c .air.toml
 
-hot-cli:
-	air -c .air-cli.toml
+go-clean-cache:
+	go clean -modcache
 
 gokit-update:
-	go clean -modcache && go get -u github.com/weiloon1234/gokit@latest
+	GOPROXY=direct go get -u github.com/weiloon1234/gokit@latest
 
 # Clean target
 clean-build:
