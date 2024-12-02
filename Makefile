@@ -1,4 +1,4 @@
-.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross run-server run-cli hot gokit-update go-clean-cache clean-build help
+.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross run-server run-server-build run-cli hot gokit-update go-clean-cache clean-build help
 
 # Variables
 BIN_DIR := bin
@@ -33,7 +33,10 @@ build-cli-windows:
 build-all-cross: build-web-linux build-cli-windows
 
 # Run targets
-run-server: build-web
+run-server:
+	@$(BIN_DIR)/web
+
+run-server-build: build-web
 	@$(BIN_DIR)/web
 
 run-cli: build-cli

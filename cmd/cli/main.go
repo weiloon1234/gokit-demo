@@ -6,31 +6,43 @@ import (
 	"github.com/weiloon1234/gokit"
 	"github.com/weiloon1234/gokit/cli"
 	"github.com/weiloon1234/gokit/cli/commands"
+	"gokit-demo/database/seeds"
 )
 
 func main() {
-	// Minimal gokit configuration for CLI
 	config := gokit.Config{
-		DBConfig: &gokit.DBConfig{
+		AppConfig: gokit.AppConfig{
+			AppName: "GoKit-Boilerplate",
+			AppEnv:  "local",
+			AppPort: "8081",
+		},
+		FeatureConfig: gokit.FeatureConfig{
+			EnableDB:     true,
+			EnableLocale: true,
+			EnableRedis:  true,
+		},
+		DBConfig: gokit.DBConfig{
 			Host:         "localhost",
 			Port:         "3306",
 			Username:     "root",
 			DatabaseName: "go_test1",
 		},
-		LocalizationConfig: gokit.LocaleConfig{
-			DefaultLanguage: "en",
+		RedisConfig: gokit.RedisConfig{
+			Host: "127.0.0.1",
+			Port: "6379",
 		},
-		Timezone: "UTC",
-		Features: gokit.Features{EnableDB: true}, // Enable only DB feature
+		LocalizationConfig: gokit.LocaleConfig{
+			DefaultLanguage:    "en",
+			SupportedLanguages: []string{"en", "zh"},
+			TranslationPaths:   []string{"locales"},
+		},
 	}
 
 	// Initialize gokit for CLI use
 	gokit.Init(config)
 
 	// Register a custom seeder
-	commands.RegisterSeeder("example_seeder", func() {
-		fmt.Println("Running example seeder...")
-	})
+	commands.RegisterSeeder("country_seeder", seeds.CountrySeeder)
 
 	// Add a custom CLI command
 	customCommand := &cobra.Command{

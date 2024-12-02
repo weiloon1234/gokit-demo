@@ -1,29 +1,19 @@
 ### reload core package with command
 
-`go clean -modcache && go mod tidy`
+# TO update GoKit to latest version
+`make gokit-update`
 
-cannot? try next
+# BUILD -> CLI
+`go build -o bin/cli ./cmd/cli` or `make build-cli`
 
-`GOPRIVATE=github.com/weiloon1234/gokit go get -u github.com/weiloon1234/gokit@main`
+# BUILD -> WEB
+`go build -o bin/web ./cmd/web` or `make build-web`
 
-still cannot?
+# BUILD ALL
+`make build-all`
 
-try `go clean -modcache`, if have error unlinkat directory not empty then 
+# RUN SERVER (WITHOUT BUILD)
+`make run-server`
 
-
-`go env GOMODCACHE`
-
-This will return something like:
-
-`/Users/your_name/go/pkg/mod`
-
-then change directory to the folder
-
-`cd /Users/your_name/go/pkg/mod`
-
-and run `rm -rf cache`,then retry
-
-## BUILD
-`go build -o bin/cli ./cmd/cli`
-
-`go build -o bin/web ./cmd/web`
+# #BUILD AND RUN SERVER
+`make run-server-build`
