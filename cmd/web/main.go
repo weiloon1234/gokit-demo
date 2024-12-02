@@ -18,6 +18,7 @@ func main() {
 			EnableRedis:  true,
 		},
 		DBConfig: gokit.DBConfig{
+			Driver:       "mysql",
 			Host:         "localhost",
 			Port:         "3306",
 			Username:     "root",

@@ -6,7 +6,7 @@ require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/spf13/cobra v1.8.1
-	github.com/weiloon1234/gokit v0.0.0-20241202152010-d54bfdb54b85
+	github.com/weiloon1234/gokit v0.0.0-20241202153525-9b403fc79583
 	golang.org/x/crypto v0.29.0
 	gorm.io/gorm v1.25.12
 )
