@@ -1,12 +1,11 @@
 package main
 
 import (
+	"gokit-demo/commands"
+
 	"github.com/spf13/cobra"
 	"github.com/weiloon1234/gokit"
 	"github.com/weiloon1234/gokit/cli"
-	gokitCommand "github.com/weiloon1234/gokit/cli/commands"
-	"gokit-demo/commands"
-	"gokit-demo/database/seeds"
 )
 
 func main() {
@@ -43,7 +42,7 @@ func main() {
 	gokit.Init(config)
 
 	// Register a custom seeder
-	gokitCommand.RegisterSeeder("country_seeder", seeds.CountrySeeder)
+	// gokitCommand.RegisterSeeder("country_seeder", seeds.CountrySeeder)
 
 	// Add custom command here
 	cli.Init([]*cobra.Command{

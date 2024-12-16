@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/weiloon1234/gokit"
 	"gokit-demo/routes"
+
+	"github.com/weiloon1234/gokit"
 )
 
 func main() {
@@ -36,6 +37,9 @@ func main() {
 	}
 
 	gokit.Init(config)
+
+	// Close the database connection when the program exits
+	defer gokit.Close()
 
 	r := gokit.InitRouter(config)
 	routes.Root(r)
