@@ -3,12 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
-	"gokit-demo/routes"
 	"time"
+
+	"gokit-demo/ent/migrate"
 
 	"github.com/weiloon1234/gokit"
 	"github.com/weiloon1234/gokit/database"
-	"github.com/weiloon1234/gokit/ent/migrate"
 )
 
 func main() {
@@ -49,7 +49,7 @@ func main() {
 	// Retrieve the ent client from gokit
 	dbClient := database.GetDBClient()
 
-	// Run the schema migration with context timeout
+	// Run the schema migration with project schema
 	migrationCtx, cancelMigration := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancelMigration()
 	if err := dbClient.Schema.Create(
@@ -58,17 +58,15 @@ func main() {
 		migrate.WithDropIndex(true),
 	); err != nil {
 		panic(fmt.Errorf("failed to run schema migration: %v", err))
-	} else {
-		fmt.Print("ELLO")
 	}
 
-	r := gokit.InitRouter(config)
-	routes.Root(r)
-	routes.ApiUserRoute(r)
-	routes.ApiAdminRoute(r)
+	// Confirm that migration ran
+	fmt.Println("ELLO")
 
+	// Initialize router and start server
+	r := gokit.InitRouter(config)
 	err := r.Run(":" + config.AppConfig.AppPort)
 	if err != nil {
-		return
+		panic(err)
 	}
 }
