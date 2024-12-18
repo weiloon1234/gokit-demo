@@ -1,9 +1,14 @@
 package main
 
 import (
+	"context"
+	"fmt"
 	"gokit-demo/routes"
+	"time"
 
 	"github.com/weiloon1234/gokit"
+	"github.com/weiloon1234/gokit/database"
+	"github.com/weiloon1234/gokit/ent/migrate"
 )
 
 func main() {
@@ -38,8 +43,24 @@ func main() {
 
 	gokit.Init(config)
 
-	// Close the database connection when the program exits
+	// Close everything that need to be closed
 	defer gokit.Close()
+
+	// Retrieve the ent client from gokit
+	dbClient := database.GetDBClient()
+
+	// Run the schema migration with context timeout
+	migrationCtx, cancelMigration := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancelMigration()
+	if err := dbClient.Schema.Create(
+		migrationCtx,
+		migrate.WithDropColumn(true),
+		migrate.WithDropIndex(true),
+	); err != nil {
+		panic(fmt.Errorf("failed to run schema migration: %v", err))
+	} else {
+		fmt.Print("ELLO")
+	}
 
 	r := gokit.InitRouter(config)
 	routes.Root(r)
