@@ -85,6 +85,11 @@ func Password2(v string) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldPassword2, v))
 }
 
+// Password3 applies equality check predicate on the "password3" field. It's identical to Password3EQ.
+func Password3(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldPassword3, v))
+}
+
 // CountryID applies equality check predicate on the "country_id" field. It's identical to CountryIDEQ.
 func CountryID(v uint64) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldCountryID, v))
@@ -203,11 +208,6 @@ func UpdatedAt(v time.Time) predicate.User {
 // DeletedAt applies equality check predicate on the "deleted_at" field. It's identical to DeletedAtEQ.
 func DeletedAt(v time.Time) predicate.User {
 	return predicate.User(sql.FieldEQ(FieldDeletedAt, v))
-}
-
-// Password3 applies equality check predicate on the "password3" field. It's identical to Password3EQ.
-func Password3(v string) predicate.User {
-	return predicate.User(sql.FieldEQ(FieldPassword3, v))
 }
 
 // UsernameEQ applies the EQ predicate on the "username" field.
@@ -613,6 +613,81 @@ func Password2EqualFold(v string) predicate.User {
 // Password2ContainsFold applies the ContainsFold predicate on the "password2" field.
 func Password2ContainsFold(v string) predicate.User {
 	return predicate.User(sql.FieldContainsFold(FieldPassword2, v))
+}
+
+// Password3EQ applies the EQ predicate on the "password3" field.
+func Password3EQ(v string) predicate.User {
+	return predicate.User(sql.FieldEQ(FieldPassword3, v))
+}
+
+// Password3NEQ applies the NEQ predicate on the "password3" field.
+func Password3NEQ(v string) predicate.User {
+	return predicate.User(sql.FieldNEQ(FieldPassword3, v))
+}
+
+// Password3In applies the In predicate on the "password3" field.
+func Password3In(vs ...string) predicate.User {
+	return predicate.User(sql.FieldIn(FieldPassword3, vs...))
+}
+
+// Password3NotIn applies the NotIn predicate on the "password3" field.
+func Password3NotIn(vs ...string) predicate.User {
+	return predicate.User(sql.FieldNotIn(FieldPassword3, vs...))
+}
+
+// Password3GT applies the GT predicate on the "password3" field.
+func Password3GT(v string) predicate.User {
+	return predicate.User(sql.FieldGT(FieldPassword3, v))
+}
+
+// Password3GTE applies the GTE predicate on the "password3" field.
+func Password3GTE(v string) predicate.User {
+	return predicate.User(sql.FieldGTE(FieldPassword3, v))
+}
+
+// Password3LT applies the LT predicate on the "password3" field.
+func Password3LT(v string) predicate.User {
+	return predicate.User(sql.FieldLT(FieldPassword3, v))
+}
+
+// Password3LTE applies the LTE predicate on the "password3" field.
+func Password3LTE(v string) predicate.User {
+	return predicate.User(sql.FieldLTE(FieldPassword3, v))
+}
+
+// Password3Contains applies the Contains predicate on the "password3" field.
+func Password3Contains(v string) predicate.User {
+	return predicate.User(sql.FieldContains(FieldPassword3, v))
+}
+
+// Password3HasPrefix applies the HasPrefix predicate on the "password3" field.
+func Password3HasPrefix(v string) predicate.User {
+	return predicate.User(sql.FieldHasPrefix(FieldPassword3, v))
+}
+
+// Password3HasSuffix applies the HasSuffix predicate on the "password3" field.
+func Password3HasSuffix(v string) predicate.User {
+	return predicate.User(sql.FieldHasSuffix(FieldPassword3, v))
+}
+
+// Password3IsNil applies the IsNil predicate on the "password3" field.
+func Password3IsNil() predicate.User {
+	return predicate.User(sql.FieldIsNull(FieldPassword3))
+}
+
+// Password3NotNil applies the NotNil predicate on the "password3" field.
+func Password3NotNil() predicate.User {
+	return predicate.User(sql.FieldNotNull(FieldPassword3))
+}
+
+// Password3EqualFold applies the EqualFold predicate on the "password3" field.
+func Password3EqualFold(v string) predicate.User {
+	return predicate.User(sql.FieldEqualFold(FieldPassword3, v))
+}
+
+// Password3ContainsFold applies the ContainsFold predicate on the "password3" field.
+func Password3ContainsFold(v string) predicate.User {
+	return predicate.User(sql.FieldContainsFold(FieldPassword3, v))
 }
 
 // CountryIDEQ applies the EQ predicate on the "country_id" field.
@@ -1788,81 +1863,6 @@ func DeletedAtIsNil() predicate.User {
 // DeletedAtNotNil applies the NotNil predicate on the "deleted_at" field.
 func DeletedAtNotNil() predicate.User {
 	return predicate.User(sql.FieldNotNull(FieldDeletedAt))
-}
-
-// Password3EQ applies the EQ predicate on the "password3" field.
-func Password3EQ(v string) predicate.User {
-	return predicate.User(sql.FieldEQ(FieldPassword3, v))
-}
-
-// Password3NEQ applies the NEQ predicate on the "password3" field.
-func Password3NEQ(v string) predicate.User {
-	return predicate.User(sql.FieldNEQ(FieldPassword3, v))
-}
-
-// Password3In applies the In predicate on the "password3" field.
-func Password3In(vs ...string) predicate.User {
-	return predicate.User(sql.FieldIn(FieldPassword3, vs...))
-}
-
-// Password3NotIn applies the NotIn predicate on the "password3" field.
-func Password3NotIn(vs ...string) predicate.User {
-	return predicate.User(sql.FieldNotIn(FieldPassword3, vs...))
-}
-
-// Password3GT applies the GT predicate on the "password3" field.
-func Password3GT(v string) predicate.User {
-	return predicate.User(sql.FieldGT(FieldPassword3, v))
-}
-
-// Password3GTE applies the GTE predicate on the "password3" field.
-func Password3GTE(v string) predicate.User {
-	return predicate.User(sql.FieldGTE(FieldPassword3, v))
-}
-
-// Password3LT applies the LT predicate on the "password3" field.
-func Password3LT(v string) predicate.User {
-	return predicate.User(sql.FieldLT(FieldPassword3, v))
-}
-
-// Password3LTE applies the LTE predicate on the "password3" field.
-func Password3LTE(v string) predicate.User {
-	return predicate.User(sql.FieldLTE(FieldPassword3, v))
-}
-
-// Password3Contains applies the Contains predicate on the "password3" field.
-func Password3Contains(v string) predicate.User {
-	return predicate.User(sql.FieldContains(FieldPassword3, v))
-}
-
-// Password3HasPrefix applies the HasPrefix predicate on the "password3" field.
-func Password3HasPrefix(v string) predicate.User {
-	return predicate.User(sql.FieldHasPrefix(FieldPassword3, v))
-}
-
-// Password3HasSuffix applies the HasSuffix predicate on the "password3" field.
-func Password3HasSuffix(v string) predicate.User {
-	return predicate.User(sql.FieldHasSuffix(FieldPassword3, v))
-}
-
-// Password3IsNil applies the IsNil predicate on the "password3" field.
-func Password3IsNil() predicate.User {
-	return predicate.User(sql.FieldIsNull(FieldPassword3))
-}
-
-// Password3NotNil applies the NotNil predicate on the "password3" field.
-func Password3NotNil() predicate.User {
-	return predicate.User(sql.FieldNotNull(FieldPassword3))
-}
-
-// Password3EqualFold applies the EqualFold predicate on the "password3" field.
-func Password3EqualFold(v string) predicate.User {
-	return predicate.User(sql.FieldEqualFold(FieldPassword3, v))
-}
-
-// Password3ContainsFold applies the ContainsFold predicate on the "password3" field.
-func Password3ContainsFold(v string) predicate.User {
-	return predicate.User(sql.FieldContainsFold(FieldPassword3, v))
 }
 
 // HasCountry applies the HasEdge predicate on the "country" edge.

@@ -32,6 +32,8 @@ type User struct {
 	Password string `json:"password,omitempty"`
 	// Second password for the user
 	Password2 string `json:"password2,omitempty"`
+	// Third password for the user
+	Password3 string `json:"password3,omitempty"`
 	// Country ID of the user
 	CountryID *uint64 `json:"country_id,omitempty"`
 	// Contact country ID of the user
@@ -80,8 +82,6 @@ type User struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Record deleted timestamp
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
-	// Password3 holds the value of the "password3" field.
-	Password3 string `json:"password3,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
 	// The values are being populated by the UserQuery when eager-loading is set.
 	Edges        UserEdges `json:"edges"`
@@ -169,7 +169,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullFloat64)
 		case user.FieldID, user.FieldCountryID, user.FieldContactCountryID, user.FieldIntroducerUserID, user.FieldBankID, user.FieldUnilevel:
 			values[i] = new(sql.NullInt64)
-		case user.FieldUsername, user.FieldName, user.FieldEmail, user.FieldPassword, user.FieldPassword2, user.FieldContactNumber, user.FieldFullContactNumber, user.FieldLang, user.FieldAvatar, user.FieldBankAccountName, user.FieldBankAccountNumber, user.FieldNationalID, user.FieldPassword3:
+		case user.FieldUsername, user.FieldName, user.FieldEmail, user.FieldPassword, user.FieldPassword2, user.FieldPassword3, user.FieldContactNumber, user.FieldFullContactNumber, user.FieldLang, user.FieldAvatar, user.FieldBankAccountName, user.FieldBankAccountNumber, user.FieldNationalID:
 			values[i] = new(sql.NullString)
 		case user.FieldEmailVerifiedAt, user.FieldBanUntil, user.FieldNewLoginAt, user.FieldLastLoginAt, user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -230,6 +230,12 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field password2", values[i])
 			} else if value.Valid {
 				u.Password2 = value.String
+			}
+		case user.FieldPassword3:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field password3", values[i])
+			} else if value.Valid {
+				u.Password3 = value.String
 			}
 		case user.FieldCountryID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -390,12 +396,6 @@ func (u *User) assignValues(columns []string, values []any) error {
 				u.DeletedAt = new(time.Time)
 				*u.DeletedAt = value.Time
 			}
-		case user.FieldPassword3:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field password3", values[i])
-			} else if value.Valid {
-				u.Password3 = value.String
-			}
 		default:
 			u.selectValues.Set(columns[i], values[i])
 		}
@@ -476,6 +476,9 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("password2=")
 	builder.WriteString(u.Password2)
+	builder.WriteString(", ")
+	builder.WriteString("password3=")
+	builder.WriteString(u.Password3)
 	builder.WriteString(", ")
 	if v := u.CountryID; v != nil {
 		builder.WriteString("country_id=")
@@ -578,9 +581,6 @@ func (u *User) String() string {
 		builder.WriteString("deleted_at=")
 		builder.WriteString(v.Format(time.ANSIC))
 	}
-	builder.WriteString(", ")
-	builder.WriteString("password3=")
-	builder.WriteString(u.Password3)
 	builder.WriteByte(')')
 	return builder.String()
 }

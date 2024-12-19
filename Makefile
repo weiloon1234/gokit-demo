@@ -1,4 +1,4 @@
-.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross run-server run-server-build run-cli hot gokit-update go-clean-cache clean-build help
+.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross copy-base-entity ent run-server run-server-build run-cli hot gokit-update go-clean-cache clean-build help
 
 # Variables
 BIN_DIR := bin
@@ -32,6 +32,15 @@ build-cli-windows:
 
 build-all-cross: build-web-linux build-cli-windows
 
+copy-ent: 
+	go run $(CLI_CMD)/main.go copy-ent
+	
+copy-ent-hook: 
+	go run $(CLI_CMD)/main.go copy-ent-hook
+
+ent:
+	go generate ./ent
+
 # Run targets
 run-server:
 	@$(BIN_DIR)/web
@@ -50,6 +59,7 @@ go-clean-cache:
 
 gokit-update:
 	GOPROXY=direct go get -u github.com/weiloon1234/gokit@latest
+	GOPROXY=direct go get -u github.com/weiloon1234/gokit-base-entity@latest
 
 # Clean target
 clean-build:
@@ -58,14 +68,17 @@ clean-build:
 # Help target
 help:
 	@echo "Available targets:"
-	@echo "  build-web        Build the web server executable"
-	@echo "  build-cli        Build the CLI tool executable"
-	@echo "  build-all        Build both the web server and CLI tool"
-	@echo "  build-web-linux  Build the web server for Linux"
+	@echo "  build-web         Build the web server executable"
+	@echo "  build-cli         Build the CLI tool executable"
+	@echo "  build-all         Build both the web server and CLI tool"
+	@echo "  build-web-linux   Build the web server for Linux"
 	@echo "  build-cli-windows Build the CLI tool for Windows"
-	@echo "  build-all-cross  Build for multiple platforms"
-	@echo "  run-server       Build and run the web server"
-	@echo "  run-cli          Build and run the CLI tool (pass ARGS=\"<command>\")"
-	@echo "  hot-web          Hot reload web server with air"
-	@echo "  hot-cli          Hot reload CLI tool with air"
-	@echo "  clean-build      Remove all built files"
+	@echo "  build-all-cross   Build for multiple platforms"
+	@echo "  copy-ent          Copy base entity to the project"
+	@echo "  copy-ent-hook     Copy entity hook to the project"
+	@echo "  ent               Generate ent schema"
+	@echo "  run-server        Build and run the web server"
+	@echo "  run-cli           Build and run the CLI tool (pass ARGS=\"<command>\")"
+	@echo "  hot-web           Hot reload web server with air"
+	@echo "  hot-cli           Hot reload CLI tool with air"
+	@echo "  clean-build       Remove all built files"

@@ -51,3 +51,9 @@ go run cmd/cli/main.go command_name
 
 # #BUILD AND RUN SERVER
 `make run-server-build`
+
+# Entity type assert
+```
+// Retrieve the client and type-assert it to *ent.Client
+client := gokit.database.GetDBClient().(*ent.Client)
+```

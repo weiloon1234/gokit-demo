@@ -5,9 +5,14 @@ import (
 	"fmt"
 	"time"
 
+	"entgo.io/ent/dialect"
+	"github.com/weiloon1234/gokit"
+
+	"gokit-demo/ent"
+	"gokit-demo/ent/hook"
 	"gokit-demo/ent/migrate"
 
-	"github.com/weiloon1234/gokit"
+	entSQL "entgo.io/ent/dialect/sql"
 	"github.com/weiloon1234/gokit/database"
 )
 
@@ -46,22 +51,25 @@ func main() {
 	// Close everything that need to be closed
 	defer gokit.Close()
 
-	// Retrieve the ent client from gokit
-	dbClient := database.GetDBClient()
+	if config.FeatureConfig.EnableDB {
+		// Wrap the database connection with Ent's SQL driver
+		entDriver := entSQL.OpenDB(dialect.MySQL, database.GetSQLDB())
+		entClient := ent.NewClient(ent.Driver(entDriver))
 
-	// Run the schema migration with project schema
-	migrationCtx, cancelMigration := context.WithTimeout(context.Background(), 60*time.Second)
-	defer cancelMigration()
-	if err := dbClient.Schema.Create(
-		migrationCtx,
-		migrate.WithDropColumn(true),
-		migrate.WithDropIndex(true),
-	); err != nil {
-		panic(fmt.Errorf("failed to run schema migration: %v", err))
+		// Run the schema migration with context timeout
+		migrationCtx, cancelMigration := context.WithTimeout(context.Background(), 60*time.Second)
+		defer cancelMigration()
+		if err := entClient.Schema.Create(
+			migrationCtx,
+			migrate.WithDropColumn(true),
+			migrate.WithDropIndex(true),
+		); err != nil {
+			panic(fmt.Errorf("failed to create schema resources: %w", err))
+		}
+
+		hook.SoftDeleteHook(entClient)
+		database.SetEntClient(entClient)
 	}
-
-	// Confirm that migration ran
-	fmt.Println("ELLO")
 
 	// Initialize router and start server
 	r := gokit.InitRouter(config)

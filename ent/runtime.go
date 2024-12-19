@@ -131,39 +131,39 @@ func init() {
 	// user.Password2Validator is a validator for the "password2" field. It is called by the builders before save.
 	user.Password2Validator = userDescPassword2.Validators[0].(func(string) error)
 	// userDescLang is the schema descriptor for lang field.
-	userDescLang := userFields[12].Descriptor()
+	userDescLang := userFields[13].Descriptor()
 	// user.DefaultLang holds the default value on creation for the lang field.
 	user.DefaultLang = userDescLang.Default.(string)
 	// userDescCredit1 is the schema descriptor for credit_1 field.
-	userDescCredit1 := userFields[14].Descriptor()
+	userDescCredit1 := userFields[15].Descriptor()
 	// user.DefaultCredit1 holds the default value on creation for the credit_1 field.
 	user.DefaultCredit1 = userDescCredit1.Default.(float64)
 	// userDescCredit2 is the schema descriptor for credit_2 field.
-	userDescCredit2 := userFields[15].Descriptor()
+	userDescCredit2 := userFields[16].Descriptor()
 	// user.DefaultCredit2 holds the default value on creation for the credit_2 field.
 	user.DefaultCredit2 = userDescCredit2.Default.(float64)
 	// userDescCredit3 is the schema descriptor for credit_3 field.
-	userDescCredit3 := userFields[16].Descriptor()
+	userDescCredit3 := userFields[17].Descriptor()
 	// user.DefaultCredit3 holds the default value on creation for the credit_3 field.
 	user.DefaultCredit3 = userDescCredit3.Default.(float64)
 	// userDescCredit4 is the schema descriptor for credit_4 field.
-	userDescCredit4 := userFields[17].Descriptor()
+	userDescCredit4 := userFields[18].Descriptor()
 	// user.DefaultCredit4 holds the default value on creation for the credit_4 field.
 	user.DefaultCredit4 = userDescCredit4.Default.(float64)
 	// userDescCredit5 is the schema descriptor for credit_5 field.
-	userDescCredit5 := userFields[18].Descriptor()
+	userDescCredit5 := userFields[19].Descriptor()
 	// user.DefaultCredit5 holds the default value on creation for the credit_5 field.
 	user.DefaultCredit5 = userDescCredit5.Default.(float64)
 	// userDescFirstLogin is the schema descriptor for first_login field.
-	userDescFirstLogin := userFields[23].Descriptor()
+	userDescFirstLogin := userFields[24].Descriptor()
 	// user.DefaultFirstLogin holds the default value on creation for the first_login field.
 	user.DefaultFirstLogin = userDescFirstLogin.Default.(bool)
 	// userDescCreatedAt is the schema descriptor for created_at field.
-	userDescCreatedAt := userFields[28].Descriptor()
+	userDescCreatedAt := userFields[29].Descriptor()
 	// user.DefaultCreatedAt holds the default value on creation for the created_at field.
 	user.DefaultCreatedAt = userDescCreatedAt.Default.(func() time.Time)
 	// userDescUpdatedAt is the schema descriptor for updated_at field.
-	userDescUpdatedAt := userFields[29].Descriptor()
+	userDescUpdatedAt := userFields[30].Descriptor()
 	// user.DefaultUpdatedAt holds the default value on creation for the updated_at field.
 	user.DefaultUpdatedAt = userDescUpdatedAt.Default.(func() time.Time)
 	// user.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
