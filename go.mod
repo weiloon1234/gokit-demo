@@ -6,7 +6,7 @@ require (
 	entgo.io/ent v0.14.1
 	github.com/gin-gonic/gin v1.10.0
 	github.com/spf13/cobra v1.8.1
-	github.com/weiloon1234/gokit v0.0.0-20241219174441-dbf588acc9d0
+	github.com/weiloon1234/gokit v0.0.0-20241219180432-e5de8bc0eac9
 )
 
 require (
@@ -59,7 +59,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
-	github.com/weiloon1234/gokit-base-entity v0.0.0-20241219174212-36b9290c4378 // indirect
+	github.com/weiloon1234/gokit-base-entity v0.0.0-20241219180334-f291767f186e // indirect
 	github.com/xuri/efp v0.0.0-20241211021726-c4e992084aa6 // indirect
 	github.com/xuri/excelize/v2 v2.9.0 // indirect
 	github.com/xuri/nfp v0.0.0-20240318013403-ab9948c2c4a7 // indirect

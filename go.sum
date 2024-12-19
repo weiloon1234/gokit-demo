@@ -242,6 +242,8 @@ github.com/weiloon1234/gokit v0.0.0-20241219173306-82340e74ee3c h1:9ItIjEkCG/Eza
 github.com/weiloon1234/gokit v0.0.0-20241219173306-82340e74ee3c/go.mod h1:XsgoaRGBGPuloMI0m2HE3Dik9KS7ie2VB0OVuThct44=
 github.com/weiloon1234/gokit v0.0.0-20241219174441-dbf588acc9d0 h1:9IRew1WhuqqSEx1kFIXKFUWeY5IlQc+MbAY2KBHMbGs=
 github.com/weiloon1234/gokit v0.0.0-20241219174441-dbf588acc9d0/go.mod h1:YsN9j9jRUPpSl6oXLAiqJNa6it1mf7iN+fe1VoGt3Mg=
+github.com/weiloon1234/gokit v0.0.0-20241219180432-e5de8bc0eac9 h1:wp1cVTp2cyA5mhbTuUUl862XJaJGvVfo/3C/ZT7AS8s=
+github.com/weiloon1234/gokit v0.0.0-20241219180432-e5de8bc0eac9/go.mod h1:IDCeVlSQQLWm6OFfPLAf+R5O9hq71TlqyUQHPaVaxm8=
 github.com/weiloon1234/gokit-base-entity v0.0.0-20241219121838-d6c97fb4588c h1:m+z/+/W/0eI391GytuFilo8rV1o7rsSDdfr6kmwT27Y=
 github.com/weiloon1234/gokit-base-entity v0.0.0-20241219121838-d6c97fb4588c/go.mod h1:DWCbPzqy5MWtkDrBcD1gjnKnu1bxfegwEf/f7Zjc9BE=
 github.com/weiloon1234/gokit-base-entity v0.0.0-20241219123456-6ec49c71fed7 h1:gRzcUpvIWfmUrFO9fO3MqBFLYL8fi4Mp7QhmxK39f2w=
@@ -274,6 +276,8 @@ github.com/weiloon1234/gokit-base-entity v0.0.0-20241219173708-a6aea20052f9 h1:o
 github.com/weiloon1234/gokit-base-entity v0.0.0-20241219173708-a6aea20052f9/go.mod h1:Vaey5q4toExoZxNgZP91Oc0H6LtcdM7x02A5l5sXRzY=
 github.com/weiloon1234/gokit-base-entity v0.0.0-20241219174212-36b9290c4378 h1:FCDP7x2X5vWLKExn5OjRzwwHRjU+UoKxdvgZ7RG0qF4=
 github.com/weiloon1234/gokit-base-entity v0.0.0-20241219174212-36b9290c4378/go.mod h1:Vaey5q4toExoZxNgZP91Oc0H6LtcdM7x02A5l5sXRzY=
+github.com/weiloon1234/gokit-base-entity v0.0.0-20241219180334-f291767f186e h1:K76wajqg4GQ1FUFCGhKdRoXk3Qcjn/UpLTFxSeJc7tU=
+github.com/weiloon1234/gokit-base-entity v0.0.0-20241219180334-f291767f186e/go.mod h1:Vaey5q4toExoZxNgZP91Oc0H6LtcdM7x02A5l5sXRzY=
 github.com/xuri/efp v0.0.0-20241211021726-c4e992084aa6 h1:8m6DWBG+dlFNbx5ynvrE7NgI+Y7OlZVMVTpayoW+rCc=
 github.com/xuri/efp v0.0.0-20241211021726-c4e992084aa6/go.mod h1:ybY/Jr0T0GTCnYjKqmdwxyxn2BQf2RcQIIvex5QldPI=
 github.com/xuri/excelize/v2 v2.9.0 h1:1tgOaEq92IOEumR1/JfYS/eR0KHOCsRv/rYXXh6YJQE=
