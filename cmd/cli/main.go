@@ -34,7 +34,7 @@ func main() {
 		LocalizationConfig: gokit.LocaleConfig{
 			DefaultLanguage:    "en",
 			SupportedLanguages: []string{"en", "zh"},
-			TranslationPaths:   []string{"locales"},
+			TranslationPaths:   []string{"lang"},
 		},
 	}
 

@@ -49,7 +49,7 @@ run-server-build: build-web
 	@$(BIN_DIR)/web
 
 run-cli: build-cli
-	@$(BIN_DIR)/cli $(ARGS)
+	@$(BIN_DIR)/cli $(filter-out $@,$(MAKECMDGOALS))
 
 hot:
 	air -c .air.toml
@@ -78,7 +78,7 @@ help:
 	@echo "  copy-ent-hook     Copy entity hook to the project"
 	@echo "  ent               Generate ent schema"
 	@echo "  run-server        Build and run the web server"
-	@echo "  run-cli           Build and run the CLI tool (pass ARGS=\"<command>\")"
+	@echo "  run-cli           Build and run the CLI tool
 	@echo "  hot-web           Hot reload web server with air"
 	@echo "  hot-cli           Hot reload CLI tool with air"
 	@echo "  clean-build       Remove all built files"
