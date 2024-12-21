@@ -6,7 +6,7 @@ require (
 	entgo.io/ent v0.14.1
 	github.com/gin-gonic/gin v1.10.0
 	github.com/spf13/cobra v1.8.1
-	github.com/weiloon1234/gokit v0.0.0-20241221185019-662c45de6ebb
+	github.com/weiloon1234/gokit v0.0.0-20241221185751-3e5211c405cd
 )
 
 require (
@@ -43,6 +43,7 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.9 // indirect
+	github.com/kolesa-team/go-webp v1.0.4 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
