@@ -67,6 +67,8 @@ func main() {
 			panic(fmt.Errorf("failed to create schema resources: %w", err))
 		}
 
+		/** FOR GOKIT AUTO REGISTER ENTITY HOOKS HERE, DON'T EDIT THIS LINE **/
+
 		hook.SoftDeleteHook(entClient)
 		database.SetEntClient(entClient)
 	}

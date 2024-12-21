@@ -1,11 +1,23 @@
 package main
 
 import (
+	"context"
+	"fmt"
 	"gokit-demo/commands"
+	"time"
 
-	"github.com/spf13/cobra"
+	"entgo.io/ent/dialect"
 	"github.com/weiloon1234/gokit"
 	"github.com/weiloon1234/gokit/cli"
+	"github.com/weiloon1234/gokit/database"
+
+	"gokit-demo/ent"
+	"gokit-demo/ent/hook"
+	"gokit-demo/ent/migrate"
+
+	entSQL "entgo.io/ent/dialect/sql"
+
+	"github.com/spf13/cobra"
 )
 
 func main() {
@@ -40,6 +52,33 @@ func main() {
 
 	// Initialize gokit for CLI use
 	gokit.Init(config)
+
+	// Close everything that need to be closed
+	defer gokit.Close()
+
+	if config.FeatureConfig.EnableDB {
+		// Wrap the database connection with Ent's SQL driver
+		entDriver := entSQL.OpenDB(dialect.MySQL, database.GetSQLDB())
+		entClient := ent.NewClient(ent.Driver(entDriver))
+
+		// Run the schema migration with context timeout
+		migrationCtx, cancelMigration := context.WithTimeout(context.Background(), 60*time.Second)
+		defer cancelMigration()
+		if err := entClient.Schema.Create(
+			migrationCtx,
+			migrate.WithDropColumn(true),
+			migrate.WithDropIndex(true),
+		); err != nil {
+			panic(fmt.Errorf("failed to create schema resources: %w", err))
+		}
+
+		/** FOR GOKIT AUTO REGISTER ENTITY HOOKS HERE, DON'T EDIT THIS LINE **/
+
+		hook.SoftDeleteHook(entClient)
+		database.SetEntClient(entClient)
+	}
+
+	/** FOR GOKIT AUTO REGISTER SEEDER HERE, DON'T EDIT THIS LINE **/
 
 	// Register a custom seeder
 	// gokitCommand.RegisterSeeder("country_seeder", seeds.CountrySeeder)
