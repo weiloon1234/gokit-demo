@@ -4,20 +4,19 @@ import (
 	"context"
 	"fmt"
 	"gokit-demo/commands"
-	"time"
-
-	"entgo.io/ent/dialect"
-	"github.com/weiloon1234/gokit"
-	"github.com/weiloon1234/gokit/cli"
-	"github.com/weiloon1234/gokit/database"
-
 	"gokit-demo/ent"
 	"gokit-demo/ent/hook"
 	"gokit-demo/ent/migrate"
+	"gokit-demo/seeds"
+	"time"
 
+	"entgo.io/ent/dialect"
 	entSQL "entgo.io/ent/dialect/sql"
-
 	"github.com/spf13/cobra"
+	"github.com/weiloon1234/gokit"
+	"github.com/weiloon1234/gokit/cli"
+	goKitCommand "github.com/weiloon1234/gokit/cli/commands"
+	"github.com/weiloon1234/gokit/database"
 )
 
 func main() {
@@ -72,16 +71,17 @@ func main() {
 			panic(fmt.Errorf("failed to create schema resources: %w", err))
 		}
 
-		/** FOR GOKIT AUTO REGISTER ENTITY HOOKS HERE, DON'T EDIT THIS LINE **/
-
-		hook.SoftDeleteHook(entClient)
 		database.SetEntClient(entClient)
+
+		/** FOR GOKIT AUTO REGISTER ENTITY HOOKS HERE, DON'T EDIT THIS LINE **/
+		hook.SoftDeleteHook(entClient)
+
+		/** FOR GOKIT AUTO REGISTER SEEDER HERE, DON'T EDIT THIS LINE **/
+		goKitCommand.RegisterSeeder("country_seeder", func() { seeds.CountrySeeder(entClient) })
+
+		// Register a custom seeder
+		// gokitCommand.RegisterSeeder("country_seeder", seeds.CountrySeeder)
 	}
-
-	/** FOR GOKIT AUTO REGISTER SEEDER HERE, DON'T EDIT THIS LINE **/
-
-	// Register a custom seeder
-	// gokitCommand.RegisterSeeder("country_seeder", seeds.CountrySeeder)
 
 	// Add custom command here
 	cli.Init([]*cobra.Command{

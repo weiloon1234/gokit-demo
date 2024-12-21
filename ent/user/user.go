@@ -26,8 +26,6 @@ const (
 	FieldPassword = "password"
 	// FieldPassword2 holds the string denoting the password2 field in the database.
 	FieldPassword2 = "password2"
-	// FieldPassword3 holds the string denoting the password3 field in the database.
-	FieldPassword3 = "password3"
 	// FieldCountryID holds the string denoting the country_id field in the database.
 	FieldCountryID = "country_id"
 	// FieldContactCountryID holds the string denoting the contact_country_id field in the database.
@@ -128,7 +126,6 @@ var Columns = []string{
 	FieldEmailVerifiedAt,
 	FieldPassword,
 	FieldPassword2,
-	FieldPassword3,
 	FieldCountryID,
 	FieldContactCountryID,
 	FieldContactNumber,
@@ -228,11 +225,6 @@ func ByPassword(opts ...sql.OrderTermOption) OrderOption {
 // ByPassword2 orders the results by the password2 field.
 func ByPassword2(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldPassword2, opts...).ToFunc()
-}
-
-// ByPassword3 orders the results by the password3 field.
-func ByPassword3(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldPassword3, opts...).ToFunc()
 }
 
 // ByCountryID orders the results by the country_id field.

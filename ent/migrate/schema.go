@@ -172,7 +172,6 @@ var (
 		{Name: "email_verified_at", Type: field.TypeTime, Nullable: true},
 		{Name: "password", Type: field.TypeString},
 		{Name: "password2", Type: field.TypeString},
-		{Name: "password3", Type: field.TypeString, Nullable: true},
 		{Name: "contact_number", Type: field.TypeString, Nullable: true},
 		{Name: "full_contact_number", Type: field.TypeString, Nullable: true},
 		{Name: "lang", Type: field.TypeString, Default: "en"},
@@ -206,25 +205,25 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "users_banks_users",
-				Columns:    []*schema.Column{UsersColumns[28]},
+				Columns:    []*schema.Column{UsersColumns[27]},
 				RefColumns: []*schema.Column{BanksColumns[0]},
 				OnDelete:   schema.SetNull,
 			},
 			{
 				Symbol:     "users_countries_users",
-				Columns:    []*schema.Column{UsersColumns[29]},
+				Columns:    []*schema.Column{UsersColumns[28]},
 				RefColumns: []*schema.Column{CountriesColumns[0]},
 				OnDelete:   schema.SetNull,
 			},
 			{
 				Symbol:     "users_countries_contact_users",
-				Columns:    []*schema.Column{UsersColumns[30]},
+				Columns:    []*schema.Column{UsersColumns[29]},
 				RefColumns: []*schema.Column{CountriesColumns[0]},
 				OnDelete:   schema.SetNull,
 			},
 			{
 				Symbol:     "users_users_introduced_users",
-				Columns:    []*schema.Column{UsersColumns[31]},
+				Columns:    []*schema.Column{UsersColumns[30]},
 				RefColumns: []*schema.Column{UsersColumns[0]},
 				OnDelete:   schema.SetNull,
 			},
@@ -243,22 +242,22 @@ var (
 			{
 				Name:    "user_country_id",
 				Unique:  false,
-				Columns: []*schema.Column{UsersColumns[29]},
+				Columns: []*schema.Column{UsersColumns[28]},
 			},
 			{
 				Name:    "user_contact_country_id",
 				Unique:  false,
-				Columns: []*schema.Column{UsersColumns[30]},
+				Columns: []*schema.Column{UsersColumns[29]},
 			},
 			{
 				Name:    "user_introducer_user_id",
 				Unique:  false,
-				Columns: []*schema.Column{UsersColumns[31]},
+				Columns: []*schema.Column{UsersColumns[30]},
 			},
 			{
 				Name:    "user_bank_id",
 				Unique:  false,
-				Columns: []*schema.Column{UsersColumns[28]},
+				Columns: []*schema.Column{UsersColumns[27]},
 			},
 		},
 	}

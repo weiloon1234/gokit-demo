@@ -90,20 +90,6 @@ func (uc *UserCreate) SetPassword2(s string) *UserCreate {
 	return uc
 }
 
-// SetPassword3 sets the "password3" field.
-func (uc *UserCreate) SetPassword3(s string) *UserCreate {
-	uc.mutation.SetPassword3(s)
-	return uc
-}
-
-// SetNillablePassword3 sets the "password3" field if the given value is not nil.
-func (uc *UserCreate) SetNillablePassword3(s *string) *UserCreate {
-	if s != nil {
-		uc.SetPassword3(*s)
-	}
-	return uc
-}
-
 // SetCountryID sets the "country_id" field.
 func (uc *UserCreate) SetCountryID(u uint64) *UserCreate {
 	uc.mutation.SetCountryID(u)
@@ -668,10 +654,6 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.Password2(); ok {
 		_spec.SetField(user.FieldPassword2, field.TypeString, value)
 		_node.Password2 = value
-	}
-	if value, ok := uc.mutation.Password3(); ok {
-		_spec.SetField(user.FieldPassword3, field.TypeString, value)
-		_node.Password3 = value
 	}
 	if value, ok := uc.mutation.ContactNumber(); ok {
 		_spec.SetField(user.FieldContactNumber, field.TypeString, value)

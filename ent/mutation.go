@@ -4483,7 +4483,6 @@ type UserMutation struct {
 	email_verified_at       *time.Time
 	password                *string
 	password2               *string
-	password3               *string
 	contact_number          *string
 	full_contact_number     *string
 	lang                    *string
@@ -4897,55 +4896,6 @@ func (m *UserMutation) OldPassword2(ctx context.Context) (v string, err error) {
 // ResetPassword2 resets all changes to the "password2" field.
 func (m *UserMutation) ResetPassword2() {
 	m.password2 = nil
-}
-
-// SetPassword3 sets the "password3" field.
-func (m *UserMutation) SetPassword3(s string) {
-	m.password3 = &s
-}
-
-// Password3 returns the value of the "password3" field in the mutation.
-func (m *UserMutation) Password3() (r string, exists bool) {
-	v := m.password3
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldPassword3 returns the old "password3" field's value of the User entity.
-// If the User object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *UserMutation) OldPassword3(ctx context.Context) (v string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldPassword3 is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldPassword3 requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldPassword3: %w", err)
-	}
-	return oldValue.Password3, nil
-}
-
-// ClearPassword3 clears the value of the "password3" field.
-func (m *UserMutation) ClearPassword3() {
-	m.password3 = nil
-	m.clearedFields[user.FieldPassword3] = struct{}{}
-}
-
-// Password3Cleared returns if the "password3" field was cleared in this mutation.
-func (m *UserMutation) Password3Cleared() bool {
-	_, ok := m.clearedFields[user.FieldPassword3]
-	return ok
-}
-
-// ResetPassword3 resets all changes to the "password3" field.
-func (m *UserMutation) ResetPassword3() {
-	m.password3 = nil
-	delete(m.clearedFields, user.FieldPassword3)
 }
 
 // SetCountryID sets the "country_id" field.
@@ -6337,7 +6287,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 31)
+	fields := make([]string, 0, 30)
 	if m.username != nil {
 		fields = append(fields, user.FieldUsername)
 	}
@@ -6355,9 +6305,6 @@ func (m *UserMutation) Fields() []string {
 	}
 	if m.password2 != nil {
 		fields = append(fields, user.FieldPassword2)
-	}
-	if m.password3 != nil {
-		fields = append(fields, user.FieldPassword3)
 	}
 	if m.country != nil {
 		fields = append(fields, user.FieldCountryID)
@@ -6451,8 +6398,6 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.Password()
 	case user.FieldPassword2:
 		return m.Password2()
-	case user.FieldPassword3:
-		return m.Password3()
 	case user.FieldCountryID:
 		return m.CountryID()
 	case user.FieldContactCountryID:
@@ -6522,8 +6467,6 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldPassword(ctx)
 	case user.FieldPassword2:
 		return m.OldPassword2(ctx)
-	case user.FieldPassword3:
-		return m.OldPassword3(ctx)
 	case user.FieldCountryID:
 		return m.OldCountryID(ctx)
 	case user.FieldContactCountryID:
@@ -6622,13 +6565,6 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetPassword2(v)
-		return nil
-	case user.FieldPassword3:
-		v, ok := value.(string)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetPassword3(v)
 		return nil
 	case user.FieldCountryID:
 		v, ok := value.(uint64)
@@ -6915,9 +6851,6 @@ func (m *UserMutation) ClearedFields() []string {
 	if m.FieldCleared(user.FieldEmailVerifiedAt) {
 		fields = append(fields, user.FieldEmailVerifiedAt)
 	}
-	if m.FieldCleared(user.FieldPassword3) {
-		fields = append(fields, user.FieldPassword3)
-	}
 	if m.FieldCleared(user.FieldCountryID) {
 		fields = append(fields, user.FieldCountryID)
 	}
@@ -6989,9 +6922,6 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldEmailVerifiedAt:
 		m.ClearEmailVerifiedAt()
 		return nil
-	case user.FieldPassword3:
-		m.ClearPassword3()
-		return nil
 	case user.FieldCountryID:
 		m.ClearCountryID()
 		return nil
@@ -7062,9 +6992,6 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldPassword2:
 		m.ResetPassword2()
-		return nil
-	case user.FieldPassword3:
-		m.ResetPassword3()
 		return nil
 	case user.FieldCountryID:
 		m.ResetCountryID()

@@ -6,7 +6,7 @@ require (
 	entgo.io/ent v0.14.1
 	github.com/gin-gonic/gin v1.10.0
 	github.com/spf13/cobra v1.8.1
-	github.com/weiloon1234/gokit v0.0.0-20241219180432-e5de8bc0eac9
+	github.com/weiloon1234/gokit v0.0.0-20241221185019-662c45de6ebb
 )
 
 require (

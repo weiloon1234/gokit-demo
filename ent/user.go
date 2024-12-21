@@ -32,8 +32,6 @@ type User struct {
 	Password string `json:"password,omitempty"`
 	// Second password for the user
 	Password2 string `json:"password2,omitempty"`
-	// Third password for the user
-	Password3 string `json:"password3,omitempty"`
 	// Country ID of the user
 	CountryID *uint64 `json:"country_id,omitempty"`
 	// Contact country ID of the user
@@ -169,7 +167,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullFloat64)
 		case user.FieldID, user.FieldCountryID, user.FieldContactCountryID, user.FieldIntroducerUserID, user.FieldBankID, user.FieldUnilevel:
 			values[i] = new(sql.NullInt64)
-		case user.FieldUsername, user.FieldName, user.FieldEmail, user.FieldPassword, user.FieldPassword2, user.FieldPassword3, user.FieldContactNumber, user.FieldFullContactNumber, user.FieldLang, user.FieldAvatar, user.FieldBankAccountName, user.FieldBankAccountNumber, user.FieldNationalID:
+		case user.FieldUsername, user.FieldName, user.FieldEmail, user.FieldPassword, user.FieldPassword2, user.FieldContactNumber, user.FieldFullContactNumber, user.FieldLang, user.FieldAvatar, user.FieldBankAccountName, user.FieldBankAccountNumber, user.FieldNationalID:
 			values[i] = new(sql.NullString)
 		case user.FieldEmailVerifiedAt, user.FieldBanUntil, user.FieldNewLoginAt, user.FieldLastLoginAt, user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -230,12 +228,6 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field password2", values[i])
 			} else if value.Valid {
 				u.Password2 = value.String
-			}
-		case user.FieldPassword3:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field password3", values[i])
-			} else if value.Valid {
-				u.Password3 = value.String
 			}
 		case user.FieldCountryID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -476,9 +468,6 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("password2=")
 	builder.WriteString(u.Password2)
-	builder.WriteString(", ")
-	builder.WriteString("password3=")
-	builder.WriteString(u.Password3)
 	builder.WriteString(", ")
 	if v := u.CountryID; v != nil {
 		builder.WriteString("country_id=")

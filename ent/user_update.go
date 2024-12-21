@@ -138,26 +138,6 @@ func (uu *UserUpdate) SetNillablePassword2(s *string) *UserUpdate {
 	return uu
 }
 
-// SetPassword3 sets the "password3" field.
-func (uu *UserUpdate) SetPassword3(s string) *UserUpdate {
-	uu.mutation.SetPassword3(s)
-	return uu
-}
-
-// SetNillablePassword3 sets the "password3" field if the given value is not nil.
-func (uu *UserUpdate) SetNillablePassword3(s *string) *UserUpdate {
-	if s != nil {
-		uu.SetPassword3(*s)
-	}
-	return uu
-}
-
-// ClearPassword3 clears the value of the "password3" field.
-func (uu *UserUpdate) ClearPassword3() *UserUpdate {
-	uu.mutation.ClearPassword3()
-	return uu
-}
-
 // SetCountryID sets the "country_id" field.
 func (uu *UserUpdate) SetCountryID(u uint64) *UserUpdate {
 	uu.mutation.SetCountryID(u)
@@ -810,12 +790,6 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if value, ok := uu.mutation.Password2(); ok {
 		_spec.SetField(user.FieldPassword2, field.TypeString, value)
 	}
-	if value, ok := uu.mutation.Password3(); ok {
-		_spec.SetField(user.FieldPassword3, field.TypeString, value)
-	}
-	if uu.mutation.Password3Cleared() {
-		_spec.ClearField(user.FieldPassword3, field.TypeString)
-	}
 	if value, ok := uu.mutation.ContactNumber(); ok {
 		_spec.SetField(user.FieldContactNumber, field.TypeString, value)
 	}
@@ -1213,26 +1187,6 @@ func (uuo *UserUpdateOne) SetNillablePassword2(s *string) *UserUpdateOne {
 	if s != nil {
 		uuo.SetPassword2(*s)
 	}
-	return uuo
-}
-
-// SetPassword3 sets the "password3" field.
-func (uuo *UserUpdateOne) SetPassword3(s string) *UserUpdateOne {
-	uuo.mutation.SetPassword3(s)
-	return uuo
-}
-
-// SetNillablePassword3 sets the "password3" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillablePassword3(s *string) *UserUpdateOne {
-	if s != nil {
-		uuo.SetPassword3(*s)
-	}
-	return uuo
-}
-
-// ClearPassword3 clears the value of the "password3" field.
-func (uuo *UserUpdateOne) ClearPassword3() *UserUpdateOne {
-	uuo.mutation.ClearPassword3()
 	return uuo
 }
 
@@ -1917,12 +1871,6 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if value, ok := uuo.mutation.Password2(); ok {
 		_spec.SetField(user.FieldPassword2, field.TypeString, value)
-	}
-	if value, ok := uuo.mutation.Password3(); ok {
-		_spec.SetField(user.FieldPassword3, field.TypeString, value)
-	}
-	if uuo.mutation.Password3Cleared() {
-		_spec.ClearField(user.FieldPassword3, field.TypeString)
 	}
 	if value, ok := uuo.mutation.ContactNumber(); ok {
 		_spec.SetField(user.FieldContactNumber, field.TypeString, value)

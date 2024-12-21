@@ -3,16 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
-	"time"
-
-	"entgo.io/ent/dialect"
-	"github.com/weiloon1234/gokit"
-
 	"gokit-demo/ent"
 	"gokit-demo/ent/hook"
 	"gokit-demo/ent/migrate"
+	"time"
 
+	"entgo.io/ent/dialect"
 	entSQL "entgo.io/ent/dialect/sql"
+	"github.com/weiloon1234/gokit"
 	"github.com/weiloon1234/gokit/database"
 )
 
@@ -67,10 +65,10 @@ func main() {
 			panic(fmt.Errorf("failed to create schema resources: %w", err))
 		}
 
-		/** FOR GOKIT AUTO REGISTER ENTITY HOOKS HERE, DON'T EDIT THIS LINE **/
-
-		hook.SoftDeleteHook(entClient)
 		database.SetEntClient(entClient)
+
+		/** FOR GOKIT AUTO REGISTER ENTITY HOOKS HERE, DON'T EDIT THIS LINE **/
+		hook.SoftDeleteHook(entClient)
 	}
 
 	// Initialize router and start server
