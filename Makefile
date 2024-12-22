@@ -1,4 +1,4 @@
-.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross copy-base-entity ent run-server run-server-build run-cli hot gokit-update go-clean-cache clean-build help
+.PHONY: default build-web build-cli build-all build-web-linux build-cli-windows build-all-cross copy-base-entity ent run-server run-server-build run-cli hot hot-cli hot-local hot-cli-local gokit-update go-clean-cache clean-build help
 
 # Variables
 BIN_DIR := bin
@@ -52,14 +52,22 @@ run-cli: build-cli
 	@$(BIN_DIR)/cli $(filter-out $@,$(MAKECMDGOALS))
 
 hot:
-	air -c .air.toml
+	./bash/restore-local-gokit.sh && air -c .air.toml
+
+hot-local:
+	HOT_RELOAD_MODULE=web && ./bash/generate-local-air.sh && air -c .air-local.toml
+
+hot-cli:
+	./bash/restore-local-gokit.sh && air -c .air-cli.toml
+
+hot-cli-local:
+	HOT_RELOAD_MODULE=cli && ./bash/generate-local-air.sh && air -c .air-cli-local.toml
 
 go-clean-cache:
 	go clean -modcache
 
 gokit-update:
 	GOPROXY=direct go get -u github.com/weiloon1234/gokit@latest
-	GOPROXY=direct go get -u github.com/weiloon1234/gokit-base-entity@latest
 
 # Clean target
 clean-build:
@@ -79,6 +87,8 @@ help:
 	@echo "  ent               Generate ent schema"
 	@echo "  run-server        Build and run the web server"
 	@echo "  run-cli           Build and run the CLI tool
-	@echo "  hot-web           Hot reload web server with air"
+	@echo "  hot               Hot reload web server with air"
+	@echo "  hot-local         Hot reload web server with air(use local gokit repo)"
 	@echo "  hot-cli           Hot reload CLI tool with air"
+	@echo "  hot-cli-local     Hot reload CLI tool with air(use local gokit repo)"
 	@echo "  clean-build       Remove all built files"

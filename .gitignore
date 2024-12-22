@@ -89,3 +89,9 @@ Temporary Items
 /tmp
 /bin
 .env
+
+local-go.mod
+local-go.sum
+.air-local.toml
+.air-cli-local.toml
+gokit
