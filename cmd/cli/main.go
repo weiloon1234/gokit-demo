@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"gokit-demo/commands"
 	"gokit-demo/ent"
-	"gokit-demo/ent/hook"
+	"gokit-demo/ent/hooks"
 	"gokit-demo/ent/migrate"
 	"gokit-demo/seeds"
 	"time"
@@ -74,7 +74,7 @@ func main() {
 		database.SetEntClient(entClient)
 
 		/** FOR GOKIT AUTO REGISTER ENTITY HOOKS HERE, DON'T EDIT THIS LINE **/
-		hook.SoftDeleteHook(entClient)
+		entClient.Use(hooks.SoftDeleteHook())
 
 		/** FOR GOKIT AUTO REGISTER SEEDER HERE, DON'T EDIT THIS LINE **/
 		goKitCommand.RegisterSeeder("country_seeder", func() { seeds.CountrySeeder(entClient) })

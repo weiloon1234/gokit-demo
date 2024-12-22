@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"gokit-demo/ent"
-	"gokit-demo/ent/hook"
+	"gokit-demo/ent/hooks"
 	"gokit-demo/ent/migrate"
 	"time"
 
@@ -68,7 +68,7 @@ func main() {
 		database.SetEntClient(entClient)
 
 		/** FOR GOKIT AUTO REGISTER ENTITY HOOKS HERE, DON'T EDIT THIS LINE **/
-		hook.SoftDeleteHook(entClient)
+		entClient.Use(hooks.SoftDeleteHook())
 	}
 
 	// Initialize router and start server
