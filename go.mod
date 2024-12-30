@@ -7,6 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/spf13/cobra v1.8.1
 	github.com/weiloon1234/gokit v0.0.0-20241222102401-a56550656789
+	golang.org/x/crypto v0.31.0
 )
 
 require (
@@ -64,7 +65,6 @@ require (
 	github.com/zclconf/go-cty v1.15.1 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	golang.org/x/arch v0.12.0 // indirect
-	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/image v0.23.0 // indirect
 	golang.org/x/mod v0.22.0 // indirect
 	golang.org/x/net v0.33.0 // indirect

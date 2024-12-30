@@ -176,12 +176,6 @@ github.com/twitchyliquid64/golang-asm v0.15.1 h1:SU5vSMR7hnwNxj24w34ZyCi/FmDZTkS
 github.com/twitchyliquid64/golang-asm v0.15.1/go.mod h1:a1lVb/DtPvCB8fslRZhAngC2+aY1QWCk3Cedj/Gdt08=
 github.com/ugorji/go/codec v1.2.12 h1:9LC83zGrHhuUA9l16C9AHXAqEV/2wBQ4nkvumAE65EE=
 github.com/ugorji/go/codec v1.2.12/go.mod h1:UNopzCgEMSXjBc6AOMqYvWC1ktqTAfzJZUZgYf6w6lg=
-github.com/weiloon1234/gokit v0.0.0-20241222071216-2af2b1aa01c4 h1:BEHEepfOpOzafQrEdSbA502ngtVRO8UnNIgaqZub44s=
-github.com/weiloon1234/gokit v0.0.0-20241222071216-2af2b1aa01c4/go.mod h1:4hAGz5XKBm9aA8fimui0l9ltBzC/w2CD5B9deA1vASY=
-github.com/weiloon1234/gokit v0.0.0-20241222101504-dd771461c837 h1:g69LtAC3JT+EiyRYnkvThg4zv1U6p2JVdrQZmbortsA=
-github.com/weiloon1234/gokit v0.0.0-20241222101504-dd771461c837/go.mod h1:h+CHGPQubmusL7qKmoWnDjR2v/NjtnGLHjoyTc4ekPA=
-github.com/weiloon1234/gokit v0.0.0-20241222101948-c2faeebf56ea h1:AGUJS6+MM7/Mr1Abg1aK+pdW/NEndY8n9NWON4LE6fI=
-github.com/weiloon1234/gokit v0.0.0-20241222101948-c2faeebf56ea/go.mod h1:h+CHGPQubmusL7qKmoWnDjR2v/NjtnGLHjoyTc4ekPA=
 github.com/weiloon1234/gokit v0.0.0-20241222102401-a56550656789 h1:PeenGb42tR8VkTBybsDkWZcmjU9nzaUe/+grHzAJzjM=
 github.com/weiloon1234/gokit v0.0.0-20241222102401-a56550656789/go.mod h1:h+CHGPQubmusL7qKmoWnDjR2v/NjtnGLHjoyTc4ekPA=
 github.com/xuri/efp v0.0.0-20241211021726-c4e992084aa6 h1:8m6DWBG+dlFNbx5ynvrE7NgI+Y7OlZVMVTpayoW+rCc=
